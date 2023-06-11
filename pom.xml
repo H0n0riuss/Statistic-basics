@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.H0n0riuss</groupId>
+    <artifactId>Statistic-basics</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>Statistic-basics</name>
+    <description>Framework for all statistic-basic things...</description>
+    <url>https://github.com/H0n0riuss/Statistic-basics</url>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.9.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Joscha Reichenberg</name>
+            <email>joscha.reichenberg@aboat-entertaining.com</email>
+            <organization>Not-jet</organization>
+            <organizationUrl>https://github.com/H0n0riuss/Statistic-basics</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/H0n0riuss/Statistic-basics.git</connection>
+        <developerConnection>scm:git:ssh://github.com:H0n0riuss/Statistic-basics.git</developerConnection>
+        <url>http://github.com/H0n0riuss/Statistic-basics/tree/main</url>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+</project>
