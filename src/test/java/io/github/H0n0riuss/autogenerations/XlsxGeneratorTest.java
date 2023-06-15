@@ -9,14 +9,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class XlsxGeneratorTest {
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(XlsxGeneratorTest.class);
 
     @Test
     public void getXlsxBoxPlotTest() {
         try {
             File currDir = new File(".");
             String path = currDir.getAbsolutePath();
-            String fileLocation = path.substring(0, path.length() - 1) + "temp.xlsx";
+            String fileLocation = path.substring(0, path.length() - 1) + "testData/temp.xlsx";
 
             FileOutputStream outputStream = new FileOutputStream(fileLocation);
 
