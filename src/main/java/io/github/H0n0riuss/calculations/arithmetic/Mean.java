@@ -1,8 +1,8 @@
 package io.github.H0n0riuss.calculations.arithmetic;
 
-public class ArithmeticMean {
+public class Mean {
 
-    public float calculateArithmeticMean(float[] data) throws ArithmeticException {
+    public float calculateMean(float[] data) throws ArithmeticException {
         if (data.length == 0) throw new ArithmeticException("Contains no data.");
 
         var res = 0f;
@@ -12,7 +12,7 @@ public class ArithmeticMean {
         return res / data.length;
     }
 
-    public float calculateWeightedArithmeticMean(float[] g, float[] x) {
+    public float calculateWeightedMean(float[] g, float[] x) {
         if (g.length == 0 || x.length == 0 || g.length != x.length) throw new ArithmeticException("invalid data");
 
         var counter = 0f;
