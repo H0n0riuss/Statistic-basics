@@ -1,6 +1,6 @@
 package io.github.H0n0riuss.autogenerations.xlsx;
 
-import io.github.H0n0riuss.calculations.frequency.FrequencyDistribution;
+import io.github.H0n0riuss.calculations.frequency.BoxPlot;
 import io.github.H0n0riuss.calculations.frequency.models.BoxPlotModel;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -9,7 +9,7 @@ import org.openxmlformats.schemas.drawingml.x2006.chart.*;
 public class XlsxGenerator {
 
     public XSSFWorkbook getXlsxBoxPlot(float[] data) {
-        var boxPlot = new FrequencyDistribution();
+        var boxPlot = new BoxPlot();
         var boxPlotModel = boxPlot.calculateBoxplot(data);
 
         var workbook = new XSSFWorkbook();
