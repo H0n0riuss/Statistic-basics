@@ -6,7 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openxmlformats.schemas.drawingml.x2006.chart.*;
 
-public class XlsxGenerator {
+public class BoxPlotXlsxGenerator {
 
     public XSSFWorkbook getXlsxBoxPlot(float[] data) {
         var boxPlot = new BoxPlot();
