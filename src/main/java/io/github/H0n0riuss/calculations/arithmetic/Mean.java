@@ -1,5 +1,7 @@
 package io.github.H0n0riuss.calculations.arithmetic;
 
+import io.github.H0n0riuss.assertions.Assert;
+
 public class Mean {
 
     public float calculateMean(float[] data) throws ArithmeticException {
@@ -23,5 +25,18 @@ public class Mean {
         }
         if (denominator <= 0) throw new ArithmeticException("denominator is less or equals 0");
         return counter / denominator;
+    }
+
+    public float calculateHarmonicMean(float[] x) {
+        var n = (float)x.length;
+
+        if (n == 0) throw new ArithmeticException("Contains no data.");
+        if (!Assert.assertPositiveNumbers(x)) throw new ArithmeticException("Data contains negative data.");
+
+        var res = 0f;
+        for (var y : x) {
+            res += 1 / y;
+        }
+        return n / res;
     }
 }
