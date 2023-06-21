@@ -17,30 +17,45 @@ public class MeanTest {
 
     @Test
     void calculateMiddleTest() {
-        var data = new float[]{10, 24, 100};
-        assertEquals(44.666668f, cut.calculateMean(data));
+        var data = new double[]{10, 24, 100};
+        assertEquals(44.666666666666664d, cut.calculateMean(data));
 
-        data = new float[]{3690, 3520, 4110};
-        assertEquals(3773.3333f, cut.calculateMean(data));
+        data = new double[]{3690, 3520, 4110};
+        assertEquals(3773.3333333333335d, cut.calculateMean(data));
 
-        assertThrows(ArithmeticException.class, () -> cut.calculateMean(new float[]{}));
+        assertThrows(ArithmeticException.class, () -> cut.calculateMean(new double[]{}));
     }
 
     @Test
     void calculateWeightedMeanTest() {
-        var g = new float[]{50, 30, 55};
-        var x = new float[]{1.14f, 1.21f, 1.19f};
-        assertEquals(1.1759259700775146, cut.calculateWeightedMean(g, x));
+        var g = new double[]{50, 30, 55};
+        var x = new double[]{1.14f, 1.21f, 1.19f};
+        assertEquals(1.1759259524168792d, cut.calculateWeightedMean(g, x));
     }
 
     @Test
     void calculateHarmonicMeanTest() {
-        var data = new float[]{1, 2, 3};
-        assertEquals(1.6363636f, cut.calculateHarmonicMean(data));
+        var data = new double[]{1, 2, 3};
+        assertEquals(1.6363636363636365d, cut.calculateHarmonicMean(data));
 
-        data = new float[]{88.1f, 82.9f, 76.4f, 58.8f, 48.85f, 59.02f};
-        assertEquals(65.98953f, cut.calculateHarmonicMean(data));
+        data = new double[]{88.1f, 82.9f, 76.4f, 58.8f, 48.85f, 59.02f};
+        assertEquals(65.98953306983908d, cut.calculateHarmonicMean(data));
 
-        assertThrows(ArithmeticException.class, () -> cut.calculateHarmonicMean(new float[]{1, 2, -3}));
+        assertThrows(ArithmeticException.class, () -> cut.calculateHarmonicMean(new double[]{1, 2, -3}));
+    }
+
+    @Test
+    void calculateGeometricMean() {
+        var data = new double[]{2, 3, 5};
+        assertEquals(3.1072325059538586d, cut.calculateGeometricMean(data));
+
+        data = new double[]{2, 0, 5};
+        assertEquals(0, cut.calculateGeometricMean(data));
+
+        data = new double[]{1.01d, 1.02d};
+        assertEquals(1.0149876846543509d, cut.calculateGeometricMean(data));
+
+        assertThrows(ArithmeticException.class, () -> cut.calculateGeometricMean(new double[]{-2, 1}));
+        assertThrows(ArithmeticException.class, () -> cut.calculateGeometricMean(new double[]{}));
     }
 }

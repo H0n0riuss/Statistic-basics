@@ -10,4 +10,13 @@ public class Assert {
         }
         return true;
     }
+
+    public static boolean assertPositiveNumbers(double[] x) {
+        for (var y : x) {
+            if (y < 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

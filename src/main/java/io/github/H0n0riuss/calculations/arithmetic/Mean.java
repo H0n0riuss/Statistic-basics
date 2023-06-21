@@ -4,21 +4,21 @@ import io.github.H0n0riuss.assertions.Assert;
 
 public class Mean {
 
-    public float calculateMean(float[] data) throws ArithmeticException {
+    public double calculateMean(double[] data) throws ArithmeticException {
         if (data.length == 0) throw new ArithmeticException("Contains no data.");
 
-        var res = 0f;
+        var res = 0d;
         for (var entry : data) {
             res += entry;
         }
         return res / data.length;
     }
 
-    public float calculateWeightedMean(float[] g, float[] x) {
+    public double calculateWeightedMean(double[] g, double[] x) {
         if (g.length == 0 || x.length == 0 || g.length != x.length) throw new ArithmeticException("invalid data");
 
-        var counter = 0f;
-        var denominator = 0f;
+        var counter = 0d;
+        var denominator = 0d;
         for (var i = 0; i < g.length; ++i) {
             counter += g[i] * x[i];
             denominator += g[i];
@@ -27,16 +27,29 @@ public class Mean {
         return counter / denominator;
     }
 
-    public float calculateHarmonicMean(float[] x) {
-        var n = (float)x.length;
+    public double calculateHarmonicMean(double[] x) {
+        var n = (double) x.length;
 
         if (n == 0) throw new ArithmeticException("Contains no data.");
         if (!Assert.assertPositiveNumbers(x)) throw new ArithmeticException("Data contains negative data.");
 
-        var res = 0f;
+        var res = 0d;
         for (var y : x) {
             res += 1 / y;
         }
         return n / res;
+    }
+
+    public double calculateGeometricMean(double[] data) {
+        if (data.length == 0) throw new ArithmeticException("Contains no data");
+        if (!Assert.assertPositiveNumbers(data)) throw new ArithmeticException("Data contains negative data.");
+
+        var res = 1d;
+        var n = (double) data.length;
+
+        for (var x : data) {
+            res *= x;
+        }
+        return Math.pow(res, 1d / n);
     }
 }
