@@ -1,5 +1,6 @@
 package io.github.H0n0riuss.calculations.arithmetic;
 
+import org.apache.commons.math3.util.Precision;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +19,7 @@ public class MeanTest {
     @Test
     void calculateMiddleTest() {
         var data = new double[]{10, 24, 100};
-        assertEquals(44.666666666666664d, cut.calculateMean(data));
+        assertEquals(44.6d, Precision.round(cut.calculateMean(data), 1));
 
         data = new double[]{3690, 3520, 4110};
         assertEquals(3773.3333333333335d, cut.calculateMean(data));
@@ -57,5 +58,16 @@ public class MeanTest {
 
         assertThrows(ArithmeticException.class, () -> cut.calculateGeometricMean(new double[]{-2, 1}));
         assertThrows(ArithmeticException.class, () -> cut.calculateGeometricMean(new double[]{}));
+    }
+
+    @Test
+    void calculateClassifiedMeanTest(){
+        var data = new double[]{1600, 2000, 2400, 2800};
+        var count = new double[]{5, 18, 22, 15};
+
+        assertEquals(2313.3d, Precision.round(cut.calculateClassifiedMean(data, count), 1));
+
+        assertThrows(ArithmeticException.class, () -> cut.calculateClassifiedMean(new double[]{23, 34}, new double[]{4}));
+        assertThrows(ArithmeticException.class, () -> cut.calculateClassifiedMean(new double[]{}, new double[]{4}));
     }
 }

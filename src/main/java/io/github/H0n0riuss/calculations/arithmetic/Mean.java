@@ -52,4 +52,17 @@ public class Mean {
         }
         return Math.pow(res, 1d / n);
     }
+
+    public double calculateClassifiedMean(double[] data, double[] count) {
+        if (data.length == 0 || count.length == 0) throw new ArithmeticException("Contains no data.");
+        if (data.length != count.length) throw new ArithmeticException("Data and count have different length.");
+
+        var n = 0;
+        var res = 0d;
+        for (var i = 0; i < data.length; ++i) {
+            res += data[i] * count[i];
+            n += count[i];
+        }
+        return res / n;
+    }
 }
