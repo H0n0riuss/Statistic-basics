@@ -19,7 +19,7 @@ public class MeanTest {
     @Test
     void calculateMiddleTest() {
         var data = new double[]{10, 24, 100};
-        assertEquals(44.6d, Precision.round(cut.calculateMean(data), 1));
+        assertEquals(44.7d, Precision.round(cut.calculateMean(data), 1));
 
         data = new double[]{3690, 3520, 4110};
         assertEquals(3773.3333333333335d, cut.calculateMean(data));
