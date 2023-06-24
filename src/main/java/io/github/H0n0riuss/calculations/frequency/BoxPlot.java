@@ -20,9 +20,10 @@ public class BoxPlot {
                 .build();
     }
 
-    private double calculateQuantile(double[] data, double percentage) { //TODO wie wird das Quantil wirklich gebildet (ist es das nächste an 25/75% oder aus der Summe)
-        var test = (data.length - 1) * percentage;
-        var index = (int) Math.round(test);
-        return data[index];
+    private double calculateQuantile(double[] data, double percentage) {
+        var n = data.length;
+        var quantile = n * percentage;
+        var index = (int) Math.round(quantile);
+        return (n % 2 == 0) ? (data[index - 1] + data[index]) / 2 : data[index];
     }
 }
