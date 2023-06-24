@@ -20,7 +20,7 @@ public class BoxPlotXlsxGeneratorTest {
 
             FileOutputStream outputStream = new FileOutputStream(fileLocation);
 
-            var data = new float[]{0, 9, 4, 0, 6, 7, 8, 13, 9, 4, 17};
+            var data = new double[]{0, 9, 4, 0, 6, 7, 8, 13, 9, 4, 17};
             var cut = new BoxPlotXlsxGenerator();
             var workbook = cut.getXlsxBoxPlot(data);
 

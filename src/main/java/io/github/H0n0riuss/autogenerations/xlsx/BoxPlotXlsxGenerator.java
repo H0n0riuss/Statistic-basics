@@ -8,7 +8,7 @@ import org.openxmlformats.schemas.drawingml.x2006.chart.*;
 
 public class BoxPlotXlsxGenerator {
 
-    public XSSFWorkbook getXlsxBoxPlot(float[] data) {
+    public XSSFWorkbook getXlsxBoxPlot(double[] data) {
         var boxPlot = new BoxPlot();
         var boxPlotModel = boxPlot.calculateBoxplot(data);
 
