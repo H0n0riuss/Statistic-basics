@@ -21,12 +21,12 @@ public class BoxPlot {
         var expatriateIndexes = calculateExpatriateIndexes(data, lowerQuantile, higherQuantile);
 
         if (expatriateIndexes[0] == -1) {
-            logger.info("No lower expatriate"); //TODO testen
+            logger.info("No lower expatriate");
         }
         if (expatriateIndexes[1] == -1) {
             logger.info("No higher expatriate");
             expatriateIndexes[1] = data.length;
-        } //TODO testen
+        }
 
         var lowerExpatriate = Arrays.copyOfRange(data, 0, expatriateIndexes[0] + 1);
         var higherExpatriate = Arrays.copyOfRange(data, expatriateIndexes[1], data.length);

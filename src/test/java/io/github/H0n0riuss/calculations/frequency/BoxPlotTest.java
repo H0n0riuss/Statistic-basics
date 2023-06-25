@@ -31,6 +31,12 @@ public class BoxPlotTest {
 
         assertEquals(1, boxPlot.lowerExpatriates.length);
         assertEquals(1, boxPlot.higherExpatriates.length);
+
+        data = new double[]{28.15, 28.29, 32.79, 33.03, 33.16, 35, 35.52, 39};
+        boxPlot = cut.calculateBoxPlotExpatriate(data);
+
+        assertEquals(0, boxPlot.lowerExpatriates.length);
+        assertEquals(0, boxPlot.higherExpatriates.length);
     }
 
     @Test
