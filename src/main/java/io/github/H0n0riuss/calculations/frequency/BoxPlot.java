@@ -2,10 +2,14 @@ package io.github.H0n0riuss.calculations.frequency;
 
 import io.github.H0n0riuss.calculations.frequency.models.BoxPlotExpatriateModel;
 import io.github.H0n0riuss.calculations.frequency.models.BoxPlotModel;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
 public class BoxPlot {
+
+    private static final Logger logger = LogManager.getLogger(BoxPlot.class);
 
     public BoxPlotExpatriateModel calculateBoxPlotExpatriate(double[] data) {
         prepareBoxPlot(data);
@@ -17,12 +21,12 @@ public class BoxPlot {
         var expatriateIndexes = calculateExpatriateIndexes(data, lowerQuantile, higherQuantile);
 
         if (expatriateIndexes[0] == -1) {
-            System.out.println("No lower expatriate"); //TODO logger //TODO testen
+            logger.info("No lower expatriate"); //TODO testen
         }
         if (expatriateIndexes[1] == -1) {
-            System.out.println("No higher expatriate");
+            logger.info("No higher expatriate");
             expatriateIndexes[1] = data.length;
-        }//TODO logger//TODO testen
+        } //TODO testen
 
         var lowerExpatriate = Arrays.copyOfRange(data, 0, expatriateIndexes[0] + 1);
         var higherExpatriate = Arrays.copyOfRange(data, expatriateIndexes[1], data.length);
