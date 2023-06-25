@@ -5,9 +5,9 @@ import lombok.Builder;
 @Builder
 public class BoxPlotModel {
 
-    public double minimum;
-    public double lowerQuartile;
-    public double median;
-    public double higherQuartile;
-    public double maximum;
+    public final double minimum;
+    public final double lowerQuantile;
+    public final double median;
+    public final double higherQuantile;
+    public final double maximum;
 }

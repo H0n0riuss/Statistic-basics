@@ -10,7 +10,7 @@ public class BoxPlotXlsxGenerator {
 
     public XSSFWorkbook getXlsxBoxPlot(double[] data) {
         var boxPlot = new BoxPlot();
-        var boxPlotModel = boxPlot.calculateBoxplot(data);
+        var boxPlotModel = boxPlot.calculateBoxPlot(data);
 
         var workbook = new XSSFWorkbook();
         var sheet = workbook.createSheet("BoxPlot");
@@ -34,9 +34,9 @@ public class BoxPlotXlsxGenerator {
     private void createDataRow(XSSFSheet sheet, BoxPlotModel boxPlotModel) {
         var row = sheet.createRow(1);
         row.createCell(0).setCellValue(boxPlotModel.minimum);
-        row.createCell(1).setCellValue(boxPlotModel.lowerQuartile);
+        row.createCell(1).setCellValue(boxPlotModel.lowerQuantile);
         row.createCell(2).setCellValue(boxPlotModel.median);
-        row.createCell(3).setCellValue(boxPlotModel.higherQuartile);
+        row.createCell(3).setCellValue(boxPlotModel.higherQuantile);
         row.createCell(4).setCellValue(boxPlotModel.maximum);
     }
 
