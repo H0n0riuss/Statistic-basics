@@ -18,10 +18,19 @@ public class BoxPlotTest {
     @Test
     void calculateBoxPlotExpatriate() {
         var data = new double[]{15, 25.75, 28.29, 32.79, 33.03, 33.16, 35, 35.52, 39, 47};
-
         var boxPlot = cut.calculateBoxPlotExpatriate(data);
+
         assertEquals(30.54, boxPlot.lowerQuantile);
         assertEquals(35.26, Precision.round(boxPlot.higherQuantile, 2));
+
+        assertEquals(data[0], boxPlot.lowerExpatriates[0]);
+        assertEquals(data[9], boxPlot.higherExpatriates[0]);
+
+        assertEquals(25.75, boxPlot.minimum);
+        assertEquals(39, boxPlot.maximum);
+
+        assertEquals(1, boxPlot.lowerExpatriates.length);
+        assertEquals(1, boxPlot.higherExpatriates.length);
     }
 
     @Test
