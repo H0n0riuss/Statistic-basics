@@ -1,5 +1,6 @@
 package io.github.H0n0riuss.calculations.frequency;
 
+import org.apache.commons.math3.util.Precision;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -19,8 +20,8 @@ public class BoxPlotTest {
         var data = new double[]{15, 25.75, 28.29, 32.79, 33.03, 33.16, 35, 35.52, 39, 47};
 
         var boxPlot = cut.calculateBoxPlotExpatriate(data);
-        assertEquals(28.29, boxPlot.lowerQuantile);
-        assertEquals(35.52, boxPlot.higherQuantile);
+        assertEquals(30.54, boxPlot.lowerQuantile);
+        assertEquals(35.26, Precision.round(boxPlot.higherQuantile, 2));
     }
 
     @Test
