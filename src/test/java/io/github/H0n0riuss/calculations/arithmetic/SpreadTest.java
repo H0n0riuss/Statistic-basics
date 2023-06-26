@@ -30,4 +30,10 @@ public class SpreadTest {
 
         assertThrows(ArithmeticException.class, () -> cut.averageMeanSpread(new double[]{}));
     }
+
+    @Test
+    void spanTest() {
+        var data = new double[]{-1, 0, 3, 9, 13, 12, 8, 4};
+        assertEquals(14, cut.span(data));
+    }
 }
