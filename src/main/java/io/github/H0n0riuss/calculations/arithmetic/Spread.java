@@ -1,5 +1,7 @@
 package io.github.H0n0riuss.calculations.arithmetic;
 
+import io.github.H0n0riuss.calculations.frequency.BoxPlot;
+
 import java.util.Arrays;
 
 public class Spread {
@@ -23,5 +25,10 @@ public class Spread {
         Arrays.sort(data);
 
         return data[n - 1] - data[0];
+    }
+
+    public double quarterlyDistance(double[] data) {
+        var boxPlot = new BoxPlot().calculateBoxPlot(data);
+        return boxPlot.higherQuantile - boxPlot.lowerQuantile;
     }
 }
