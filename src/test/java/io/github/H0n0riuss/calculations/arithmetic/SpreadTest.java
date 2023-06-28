@@ -51,4 +51,13 @@ public class SpreadTest {
 
         assertEquals(11, cut.quarterlyDistance(data));
     }
+
+    @Test
+    void averageDeviationTest() {
+        var data = new double[]{6120, 1820, 1020, 2280, 6680};
+        assertEquals(3584, cut.averageMeanSpread(data));
+
+        data = new double[]{5100, 800, 0, 3300, 7700};
+        assertEquals(3380, cut.averageMeanSpread(data));
+    }
 }
