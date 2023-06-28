@@ -11,14 +11,14 @@ public class BoxPlot {
 
     private static final Logger logger = LogManager.getLogger(BoxPlot.class);
 
-    public BoxPlotExpatriateModel calculateBoxPlotExpatriate(double[] data) {
+    public static BoxPlotExpatriateModel boxPlotExpatriate(double[] data) {
         prepareBoxPlot(data);
 
-        var lowerQuantile = calculateSimpleQuantileIndexes(data, 0.25f);
-        var median = calculateSimpleQuantileIndexes(data, 0.5f);
-        var higherQuantile = calculateSimpleQuantileIndexes(data, 0.75f);
+        var lowerQuantile = simpleQuantileIndexes(data, 0.25f);
+        var median = simpleQuantileIndexes(data, 0.5f);
+        var higherQuantile = simpleQuantileIndexes(data, 0.75f);
 
-        var expatriateIndexes = calculateExpatriateIndexes(data, lowerQuantile, higherQuantile);
+        var expatriateIndexes = expatriateIndexes(data, lowerQuantile, higherQuantile);
 
         if (expatriateIndexes[0] == -1) {
             logger.info("No lower expatriate");
@@ -35,27 +35,27 @@ public class BoxPlot {
         return BoxPlotExpatriateModel.childBuilder()
                 .minimum(data[expatriateIndexes[0] + 1])
                 .lowerExpatriates(lowerExpatriate)
-                .lowerQuantile(calculateQuantile(mainData, 0.25f))
+                .lowerQuantile(quantile(mainData, 0.25f))
                 .median(median)
-                .higherQuantile(calculateQuantile(mainData, 0.75f))
+                .higherQuantile(quantile(mainData, 0.75f))
                 .higherExpatriates(higherExpatriate)
                 .maximum(data[expatriateIndexes[1] - 1])
                 .build();
     }
 
-    public BoxPlotModel calculateBoxPlot(double[] data) throws ArithmeticException {
+    public static BoxPlotModel boxPlot(double[] data) throws ArithmeticException {
         prepareBoxPlot(data);
 
         return BoxPlotModel.builder()
                 .minimum(data[0])
-                .lowerQuantile(calculateQuantile(data, 0.25f))
-                .median(calculateQuantile(data, 0.5f))
-                .higherQuantile(calculateQuantile(data, 0.75f))
+                .lowerQuantile(quantile(data, 0.25f))
+                .median(quantile(data, 0.5f))
+                .higherQuantile(quantile(data, 0.75f))
                 .maximum(data[data.length - 1])
                 .build();
     }
 
-    private int[] calculateExpatriateIndexes(double[] data, int lowerQuantile, int higherQuantile) {
+    private static int[] expatriateIndexes(double[] data, int lowerQuantile, int higherQuantile) {
         var res = new int[]{-1, -1};
         var lowerFound = false;
         var x75 = data[higherQuantile] + 1.5 * (higherQuantile - lowerQuantile);
@@ -73,21 +73,21 @@ public class BoxPlot {
         return res;
     }
 
-    private void prepareBoxPlot(double[] data) {
+    private static void prepareBoxPlot(double[] data) {
         var n = data.length;
         if (n == 0) throw new ArithmeticException("Contains no data.");
 
         Arrays.sort(data);
     }
 
-    private double calculateQuantile(double[] data, double percentage) {
+    private static double quantile(double[] data, double percentage) {
         var n = data.length;
         var quantile = n * percentage;
         var index = (int) Math.round(quantile);
         return (n % 2 == 0) ? (data[index - 1] + data[index]) / 2 : data[index];
     }
 
-    private int calculateSimpleQuantileIndexes(double[] data, double percentage) {
+    private static int simpleQuantileIndexes(double[] data, double percentage) {
         var n = data.length;
         return (int) (n * percentage);
     }

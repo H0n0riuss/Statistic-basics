@@ -5,7 +5,7 @@ import io.github.H0n0riuss.calculations.frequency.BoxPlot;
 import java.util.Arrays;
 
 public class Spread {
-    public double averageMeanSpread(double[] data) {
+    public static double averageMean(double[] data) {
         var n = data.length;
 
         if (n == 0) throw new ArithmeticException("Contains no data.");
@@ -17,7 +17,7 @@ public class Spread {
         return res / n;
     }
 
-    public double span(double[] data) {
+    public static double span(double[] data) {
         var n = data.length;
 
         if (n == 0) throw new ArithmeticException("Contains no data.");
@@ -27,8 +27,15 @@ public class Spread {
         return data[n - 1] - data[0];
     }
 
-    public double quarterlyDistance(double[] data) {
-        var boxPlot = new BoxPlot().calculateBoxPlot(data);
+    public static double quarterlyDistance(double[] data) {
+        var boxPlot = BoxPlot.boxPlot(data);
         return boxPlot.higherQuantile - boxPlot.lowerQuantile;
+    }
+
+    public static double empiricallyVariance(double[] data) {
+        var n = data.length;
+        var arithmeticMiddle = Mean.arithmeticMean(data);
+        //for()
+        return 0;
     }
 }
