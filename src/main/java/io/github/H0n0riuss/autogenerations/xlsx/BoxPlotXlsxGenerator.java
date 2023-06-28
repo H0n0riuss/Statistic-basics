@@ -8,9 +8,8 @@ import org.openxmlformats.schemas.drawingml.x2006.chart.*;
 
 public class BoxPlotXlsxGenerator {
 
-    public XSSFWorkbook getXlsxBoxPlot(double[] data) {
-        var boxPlot = new BoxPlot();
-        var boxPlotModel = boxPlot.calculateBoxPlot(data);
+    public static XSSFWorkbook getXlsxBoxPlot(double[] data) {
+        var boxPlotModel = BoxPlot.boxPlot(data);
 
         var workbook = new XSSFWorkbook();
         var sheet = workbook.createSheet("BoxPlot");
@@ -22,7 +21,7 @@ public class BoxPlotXlsxGenerator {
         return workbook;
     }
 
-    private void createHeaderRow(XSSFSheet sheet) {
+    private static void createHeaderRow(XSSFSheet sheet) {
         var header = sheet.createRow(0);
         header.createCell(0).setCellValue("Minimum");
         header.createCell(1).setCellValue("2. Quartile");
@@ -31,7 +30,7 @@ public class BoxPlotXlsxGenerator {
         header.createCell(4).setCellValue("Maximum");
     }
 
-    private void createDataRow(XSSFSheet sheet, BoxPlotModel boxPlotModel) {
+    private static void createDataRow(XSSFSheet sheet, BoxPlotModel boxPlotModel) {
         var row = sheet.createRow(1);
         row.createCell(0).setCellValue(boxPlotModel.minimum);
         row.createCell(1).setCellValue(boxPlotModel.lowerQuantile);
@@ -40,7 +39,7 @@ public class BoxPlotXlsxGenerator {
         row.createCell(4).setCellValue(boxPlotModel.maximum);
     }
 
-    private void createChart(XSSFSheet sheet) {
+    private static void createChart(XSSFSheet sheet) {
         var drawing = sheet.createDrawingPatriarch();
         var anchor = drawing.createAnchor(0, 0, 0, 0, 0, 5, 8, 20);
 
