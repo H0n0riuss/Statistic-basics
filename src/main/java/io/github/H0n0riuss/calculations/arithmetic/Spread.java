@@ -41,4 +41,8 @@ public class Spread {
         }
         return res / (n - 1);
     }
+
+    public static double empiricallyVarianceSpread(double[] data) {
+        return Math.pow(empiricallyVariance(data), (double) 1 / 2);
+    }
 }
