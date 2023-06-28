@@ -34,8 +34,11 @@ public class Spread {
 
     public static double empiricallyVariance(double[] data) {
         var n = data.length;
-        var arithmeticMiddle = Mean.arithmeticMean(data);
-        //for()
-        return 0;
+        var arithmeticMean = Mean.arithmeticMean(data);
+        var res = 0d;
+        for (double d : data) {
+            res += Math.pow((d - arithmeticMean), 2);
+        }
+        return res / (n - 1);
     }
 }
