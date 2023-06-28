@@ -1,5 +1,6 @@
 package io.github.H0n0riuss.calculations.arithmetic;
 
+import org.apache.commons.math3.util.Precision;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -57,5 +58,11 @@ public class SpreadTest {
     void empiricallyVarianceTest() {
         var data = new double[]{185, 130, 212, 248, 90};
         assertEquals(4007, Spread.empiricallyVariance(data));
+    }
+
+    @Test
+    void empiricallyVarianceSpreadTest(){
+        var data = new double[]{185, 130, 212, 248, 90};
+        assertEquals(63.3009, Precision.round(Spread.empiricallyVarianceSpread(data), 4));
     }
 }
