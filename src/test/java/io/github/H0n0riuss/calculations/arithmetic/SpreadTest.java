@@ -56,6 +56,6 @@ public class SpreadTest {
     @Test
     void empiricallyVarianceTest() {
         var data = new double[]{185, 130, 212, 248, 90};
-        //assertEquals(4007, Spread.empiricallyVariance(data));
+        assertEquals(4007, Spread.empiricallyVariance(data));
     }
 }
