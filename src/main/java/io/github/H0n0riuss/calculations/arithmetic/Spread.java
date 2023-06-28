@@ -34,6 +34,9 @@ public class Spread {
 
     public static double empiricallyVariance(double[] data) {
         var n = data.length;
+
+        if (n == 0) throw new ArithmeticException("Contains no data.");
+
         var arithmeticMean = Mean.arithmeticMean(data);
         var res = 0d;
         for (double d : data) {
